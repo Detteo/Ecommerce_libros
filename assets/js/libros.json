@@ -6,7 +6,7 @@
     "genero": "Suspenso",
     "descripcion": "En la ciudad de Derry, un grupo de niños enfrenta un terror que regresa cada 27 años con la forma de un payaso demoníaco llamado Pennywise.",
     "precio": 65000,
-    "imagen": "assets/img/payaso.jpg"
+    "imagen": "payaso.jpg"
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "genero": "Suspenso",
     "descripcion": "Rachel observa a diario una pareja perfecta desde el tren. Un día la mujer desaparece y Rachel se convierte en testigo clave de un caso oscuro.",
     "precio": 58000,
-    "imagen": "assets/img/chica-tren.jpg"
+    "imagen": "chica-tren.jpg"
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "genero": "Suspenso",
     "descripcion": "El día de su quinto aniversario, Amy Dunne desaparece. Su esposo Nick se convierte en el principal sospechoso en un caso lleno de mentiras.",
     "precio": 62000,
-    "imagen": "assets/img/gone-girl.jpg"
+    "imagen": "gone-girl.jpg"
   },
   {
     "id": 4,
@@ -33,7 +33,7 @@
     "genero": "Fantasia",
     "descripcion": "Un joven huérfano descubre que es un mago y comienza sus estudios en Hogwarts, la escuela de magia más famosa del mundo.",
     "precio": 75000,
-    "imagen": "assets/img/harry-potter.jpg"
+    "imagen": "harry-potter.jpg"
   },
   {
     "id": 5,
@@ -42,7 +42,7 @@
     "genero": "Fantasia",
     "descripcion": "Frodo Bolsón emprende un épico viaje para destruir el Anillo Único y salvar la Tierra Media del oscuro señor Sauron.",
     "precio": 90000,
-    "imagen": "assets/img/senor-anillos.jpg"
+    "imagen": "senor-anillos.jpg"
   },
   {
     "id": 6,
@@ -51,7 +51,7 @@
     "genero": "Fantasia",
     "descripcion": "Kvothe, el músico y mago más legendario de su época, narra su propia historia desde sus humildes orígenes hasta su prodigiosa ascensión.",
     "precio": 72000,
-    "imagen": "assets/img/nombre-viento.jpg"
+    "imagen": "nombre-viento.jpg"
   },
   {
     "id": 7,
@@ -60,7 +60,7 @@
     "genero": "Romance",
     "descripcion": "Elizabeth Bennet y el orgulloso Sr. Darcy chocan en cada encuentro, sin saber que el destino los ha unido de una manera que ninguno podría imaginar.",
     "precio": 55000,
-    "imagen": "assets/img/orgullo-prejuicio.jpg"
+    "imagen": "orgullo-prejuicio.jpg"
   },
   {
     "id": 8,
@@ -69,7 +69,7 @@
     "genero": "Romance",
     "descripcion": "Noah y Allie se enamoran un verano, luego la guerra y las diferencias sociales los separan. Años después, su historia de amor vuelve a cobrar vida.",
     "precio": 60000,
-    "imagen": "assets/img/cuaderno.jpg"
+    "imagen": "cuaderno.jpg"
   },
   {
     "id": 9,
@@ -78,7 +78,7 @@
     "genero": "Romance",
     "descripcion": "Bella Swan se muda a Forks y conoce al misterioso Edward Cullen. Lo que comienza como atracción se convierte en un amor prohibido y peligroso.",
     "precio": 64000,
-    "imagen": "assets/img/crepusculo.jpg"
+    "imagen": "crepusculo.jpg"
   },
   {
     "id": 10,
@@ -87,7 +87,7 @@
     "genero": "Accion y Aventura",
     "descripcion": "El profesor Robert Langdon se ve envuelto en una conspiración centenaria al descubrir un código oculto en las obras de Leonardo Da Vinci.",
     "precio": 68000,
-    "imagen": "assets/img/codigo-davinci.jpg"
+    "imagen": "codigo-davinci.jpg"
   },
   {
     "id": 11,
@@ -96,7 +96,7 @@
     "genero": "Accion y Aventura",
     "descripcion": "Un multimillonario recrea dinosaurios con ADN fósil en una isla. Lo que iba a ser el parque del siglo se convierte en una pesadilla mortal.",
     "precio": 72000,
-    "imagen": "assets/img/jurassic-park.jpg"
+    "imagen": "jurassic-park.jpg"
   },
   {
     "id": 12,
@@ -105,7 +105,7 @@
     "genero": "Accion y Aventura",
     "descripcion": "Santiago, un joven pastor andaluz, sigue sus sueños en busca de un tesoro escondido en Egipto y descubre que el verdadero tesoro está dentro de sí mismo.",
     "precio": 50000,
-    "imagen": "assets/img/alquimista.jpg"
+    "imagen": "alquimista.jpg"
   },
   {
     "id": 13,
@@ -114,7 +114,7 @@
     "genero": "Novela",
     "descripcion": "La saga de la familia Buendía a lo largo de siete generaciones en el mítico pueblo de Macondo, obra cumbre del realismo mágico latinoamericano.",
     "precio": 78000,
-    "imagen": "assets/img/cien-anos.jpg"
+    "imagen": "cien-anos.jpg"
   },
   {
     "id": 14,
@@ -123,7 +123,7 @@
     "genero": "Novela",
     "descripcion": "En un futuro totalitario, Winston Smith trabaja en el Ministerio de la Verdad reescribiendo la historia. Su rebelión silenciosa lo llevará al límite.",
     "precio": 62000,
-    "imagen": "assets/img/1984.jpg"
+    "imagen": "1984.jpg"
   },
   {
     "id": 15,
@@ -132,6 +132,6 @@
     "genero": "Novela",
     "descripcion": "En los años 20 en Nueva York, el misterioso millonario Jay Gatsby organiza fiestas legendarias con la esperanza de recuperar a su amor perdido, Daisy.",
     "precio": 57000,
-    "imagen": "assets/img/gran-gatsby.jpg"
+    "imagen": "gran-gatsby.jpg"
   }
 ]
