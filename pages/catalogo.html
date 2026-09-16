@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - BookStore Premium</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="logo">
+        <a href="../index.html">
+            <span class="logo-icon">📚</span>
+            <span class="logo-text">BookStore</span>
+        </a>
+    </div>
+
+    <nav class="navbar">
+        <a href="../index.html">Inicio</a>
+        <a href="./catalogo.html">Catálogo</a>
+        <a href="./carrito.html" class="nav-cart">
+            <i class="fa-solid fa-cart-shopping"></i> Carrito
+        </a>
+        <a href="./login.html" class="btn-nav-login">
+            <i class="fa-solid fa-user"></i> Ingresar
+        </a>
+    </nav>
+
+    <form action="./catalogo.html" method="GET" class="search-box">
+        <input type="text" name="buscar" placeholder="Buscar libro o autor..." autocomplete="off">
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+</header>
+
+<main class="catalog-section">
+    <div class="catalog-header">
+        <h1 class="title" id="catalog-title">📚 Catálogo Premium</h1>
+
+        <div class="filter-bar">
+            <a href="./catalogo.html" class="filter-btn" id="filter-todos">Todos</a>
+            <a href="./catalogo.html?g=Suspenso" class="filter-btn" id="filter-Suspenso">Suspenso</a>
+            <a href="./catalogo.html?g=Fantasia" class="filter-btn" id="filter-Fantasia">Fantasía</a>
+            <a href="./catalogo.html?g=Romance" class="filter-btn" id="filter-Romance">Romance</a>
+            <a href="./catalogo.html?g=Accion%20y%20Aventura" class="filter-btn" id="filter-Accion y Aventura">Aventura</a>
+            <a href="./catalogo.html?g=Novela" class="filter-btn" id="filter-Novela">Novela</a>
+        </div>
+    </div>
+
+    <div class="books-grid" id="catalog-grid"></div>
+</main>
+
+<footer class="footer">
+    <div class="footer-content" style="display: flex; flex-direction: column; align-items: center; gap: 15px; padding: 20px 0;">
+        <div class="footer-brand" style="text-align: center;">
+            <span class="footer-logo">📚 BookStore Premium</span>
+            <p style="margin-top: 5px; color: #aaa; font-size: 0.9rem;">Tu librería online de confianza. Miles de historias esperándote.</p>
+        </div>
+
+        <!-- Redes Sociales / Contacto -->
+        <div class="social-links" style="display: flex; gap: 20px; align-items: center; justify-content: center; margin-top: 5px;">
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" title="WhatsApp" style="color: #25D366; font-size: 1.8rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram" style="color: #E1306C; font-size: 1.8rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+        <p style="font-size: 0.85rem; color: #888;">&copy; 2026 BookStore Premium. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="../assets/js/app.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const generoFiltro = urlParams.get('g');
+        const busquedaFiltro = urlParams.get('buscar');
+
+        const titleEl = document.getElementById('catalog-title');
+        
+        if (generoFiltro) {
+            titleEl.textContent = `📂 ${generoFiltro}`;
+            const btnActivo = document.getElementById(`filter-${generoFiltro}`);
+            if (btnActivo) btnActivo.classList.add('active');
+        } else if (busquedaFiltro) {
+            titleEl.textContent = `🔍 Resultados para: "${busquedaFiltro}"`;
+        } else {
+            const btnTodos = document.getElementById('filter-todos');
+            if (btnTodos) btnTodos.classList.add('active');
+        }
+
+        fetch('../assets/js/libros.json')
+            .then(res => res.json())
+            .then(libros => {
+                let resultados = libros;
+
+                if (generoFiltro) {
+                    resultados = libros.filter(l => l.genero.toLowerCase() === generoFiltro.toLowerCase());
+                } else if (busquedaFiltro) {
+                    const q = busquedaFiltro.toLowerCase();
+                    resultados = libros.filter(l => 
+                        l.titulo.toLowerCase().includes(q) || 
+                        l.autor.toLowerCase().includes(q)
+                    );
+                }
+
+                const container = document.getElementById('catalog-grid');
+                if (resultados.length > 0) {
+                    container.innerHTML = resultados.map(libro => crearCardLibro(libro, '../assets/img/')).join('');
+                } else {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <p>😕 No se encontraron libros.</p>
+                            <a href="./catalogo.html" class="btn-outline">Ver todos los libros</a>
+                        </div>
+                    `;
+                }
+            });
+    });
+</script>
+</body>
+</html>
