@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookStore Premium</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="logo">
+        <a href="./index.html">
+            <span class="logo-icon">📚</span>
+            <span class="logo-text">BookStore</span>
+        </a>
+    </div>
+
+    <nav class="navbar">
+        <a href="./index.html">Inicio</a>
+        <a href="./pages/catalogo.html">Catálogo</a>
+        <a href="./pages/carrito.html" class="nav-cart">
+            <i class="fa-solid fa-cart-shopping"></i> Carrito
+        </a>
+        <a href="./pages/login.html" class="btn-nav-login">
+            <i class="fa-solid fa-user"></i> Ingresar
+        </a>
+    </nav>
+
+    <form action="./pages/catalogo.html" method="GET" class="search-box">
+        <input type="text" name="buscar" placeholder="Buscar libro o autor..." autocomplete="off">
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge">✨ Libros de los mejores autores del mundo</span>
+            <h1>Descubre mundos<br><em>increíbles</em></h1>
+            <p>Fantasía, suspenso, romance, aventura y mucho más.<br>Tu próxima historia favorita está aquí.</p>
+            <div class="hero-actions">
+                <a href="./pages/catalogo.html" class="btn-hero">
+                    Explorar catálogo <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="./pages/registro.html" class="btn-hero-outline">Crear cuenta gratis</a>
+            </div>
+        </div>
+        <div class="hero-scroll-hint">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section class="genres">
+        <div class="section-header">
+            <h2>Explorar por Género</h2>
+            <p>Encuentra exactamente lo que buscas</p>
+        </div>
+        <div class="genre-container">
+            <a href="./pages/catalogo.html?g=Suspenso" class="genre suspense">
+                <span class="genre-icon">🔍</span>
+                <span class="genre-name">Suspenso</span>
+            </a>
+            <a href="./pages/catalogo.html?g=Fantasia" class="genre fantasy">
+                <span class="genre-icon">🧙</span>
+                <span class="genre-name">Fantasía</span>
+            </a>
+            <a href="./pages/catalogo.html?g=Romance" class="genre romance">
+                <span class="genre-icon">💕</span>
+                <span class="genre-name">Romance</span>
+            </a>
+            <a href="./pages/catalogo.html?g=Accion%20y%20Aventura" class="genre adventure">
+                <span class="genre-icon">⚔️</span>
+                <span class="genre-name">Aventura</span>
+            </a>
+            <a href="./pages/catalogo.html?g=Novela" class="genre novel">
+                <span class="genre-icon">📖</span>
+                <span class="genre-name">Novela</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="featured">
+        <div class="section-header">
+            <h2>🔥 Libros Destacados</h2>
+            <p>Los favoritos de nuestra comunidad de lectores</p>
+        </div>
+
+        <div class="books-grid" id="featured-grid">
+            <!-- Renderizado dinámicamente -->
+        </div>
+
+        <div class="section-cta">
+            <a href="./pages/catalogo.html" class="btn-outline">Ver catálogo completo →</a>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-content" style="display: flex; flex-direction: column; align-items: center; gap: 15px; padding: 20px 0;">
+        <div class="footer-brand" style="text-align: center;">
+            <span class="footer-logo">📚 BookStore Premium</span>
+            <p style="margin-top: 5px; color: #aaa; font-size: 0.9rem;">Tu librería online de confianza. Miles de historias esperándote.</p>
+        </div>
+
+        <!-- Redes Sociales / Contacto -->
+        <div class="social-links" style="display: flex; gap: 20px; align-items: center; justify-content: center; margin-top: 5px;">
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" title="WhatsApp" style="color: #25D366; font-size: 1.8rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram" style="color: #E1306C; font-size: 1.8rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+        <p style="font-size: 0.85rem; color: #888;">&copy; 2026 BookStore Premium. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="./assets/js/app.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('./assets/js/libros.json')
+            .then(res => res.json())
+            .then(libros => {
+                const destacados = libros.sort((a, b) => b.precio - a.precio).slice(0, 4);
+                const container = document.getElementById('featured-grid');
+                if (container) {
+                    container.innerHTML = destacados.map(libro => crearCardLibro(libro, './assets/img/')).join('');
+                }
+            });
+    });
+</script>
+</body>
+</html>

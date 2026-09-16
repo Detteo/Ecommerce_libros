@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carrito - BookStore Premium</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="logo">
+        <a href="../index.html">
+            <span class="logo-icon">📚</span>
+            <span class="logo-text">BookStore</span>
+        </a>
+    </div>
+
+    <nav class="navbar">
+        <a href="../index.html">Inicio</a>
+        <a href="./catalogo.html">Catálogo</a>
+        <a href="./carrito.html" class="nav-cart">
+            <i class="fa-solid fa-cart-shopping"></i> Carrito
+        </a>
+        <a href="./login.html" class="btn-nav-login">
+            <i class="fa-solid fa-user"></i> Ingresar
+        </a>
+    </nav>
+</header>
+
+<main class="catalog-section">
+    <h1 class="title">🛒 Mi Carrito</h1>
+    <div id="cart-container"></div>
+</main>
+
+<footer class="footer">
+    <div class="footer-content" style="display: flex; flex-direction: column; align-items: center; gap: 15px; padding: 20px 0;">
+        <div class="footer-brand" style="text-align: center;">
+            <span class="footer-logo">📚 BookStore Premium</span>
+            <p style="margin-top: 5px; color: #aaa; font-size: 0.9rem;">Tu librería online de confianza. Miles de historias esperándote.</p>
+        </div>
+
+        <!-- Redes Sociales / Contacto -->
+        <div class="social-links" style="display: flex; gap: 20px; align-items: center; justify-content: center; margin-top: 5px;">
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" title="WhatsApp" style="color: #25D366; font-size: 1.8rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram" style="color: #E1306C; font-size: 1.8rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+        <p style="font-size: 0.85rem; color: #888;">&copy; 2026 BookStore Premium. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="../assets/js/app.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', renderizarCarrito);
+
+    function renderizarCarrito() {
+        const cartContainer = document.getElementById('cart-container');
+        const carritoIds = JSON.parse(localStorage.getItem('carrito')) || [];
+
+        if (carritoIds.length === 0) {
+            cartContainer.innerHTML = `
+                <div class="empty-state large">
+                    <div class="empty-icon">🛒</div>
+                    <h2>Tu carrito está vacío</h2>
+                    <p>Explora nuestro catálogo y agrega los libros que te gusten.</p>
+                    <a href="./catalogo.html" class="btn-hero">Explorar catálogo</a>
+                </div>
+            `;
+            return;
+        }
+
+        fetch('../assets/js/libros.json')
+            .then(res => res.json())
+            .then(libros => {
+                const conteo = {};
+                carritoIds.forEach(id => conteo[id] = (conteo[id] || 0) + 1);
+
+                const idsUnicos = [...new Set(carritoIds)];
+                let total = 0;
+
+                const items = idsUnicos.map(id => {
+                    const libro = libros.find(l => l.id == id);
+                    if (!libro) return null;
+                    const cantidad = conteo[id];
+                    const subtotal = libro.precio * cantidad;
+                    total += subtotal;
+                    return { ...libro, cantidad, subtotal };
+                }).filter(Boolean);
+
+                const fmt = (num) => new Intl.NumberFormat('es-CO').format(num);
+
+                cartContainer.innerHTML = `
+                    <div class="cart-layout">
+                        <div class="cart-items">
+                            ${items.map(item => `
+                                <div class="cart-card">
+                                    <img src="../assets/img/${item.imagen}" alt="${item.titulo}" onerror="this.src='../assets/img/placeholder.svg'">
+                                    <div class="cart-info">
+                                        <span class="genre-tag">${item.genero}</span>
+                                        <h3>${item.titulo}</h3>
+                                        <p>${item.autor}</p>
+                                        <div class="cart-meta">
+                                            <span class="price">$${fmt(item.precio)}</span>
+                                            <span class="qty">× ${item.cantidad}</span>
+                                            <span class="subtotal">= $${fmt(item.subtotal)}</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-remove" title="Eliminar" onclick="eliminarDelCarrito(${item.id})">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="cart-summary">
+                            <h3>Resumen del pedido</h3>
+                            <div class="summary-row">
+                                <span>Subtotal (${items.length} títulos)</span>
+                                <span>$${fmt(total)}</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Envío digital</span>
+                                <span class="free">Gratis</span>
+                            </div>
+                            <div class="summary-total">
+                                <strong>Total</strong>
+                                <strong>$${fmt(total)}</strong>
+                            </div>
+                            <button class="btn-checkout" onclick="finalizarCompra()">
+                                <i class="fa-solid fa-lock"></i> Finalizar compra
+                            </button>
+                            <a href="./catalogo.html" class="btn-outline" style="display:block;text-align:center;margin-top:12px;">← Seguir comprando</a>
+                            <button class="btn-clear" onclick="vaciarCarrito()">Vaciar carrito</button>
+                        </div>
+                    </div>
+                `;
+            });
+    }
+
+    function eliminarDelCarrito(id) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carrito = carrito.filter(itemId => itemId != id);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        renderizarCarrito();
+    }
+
+    function vaciarCarrito() {
+        if (confirm('¿Deseas vaciar el carrito?')) {
+            localStorage.removeItem('carrito');
+            renderizarCarrito();
+        }
+    }
+
+    function finalizarCompra() {
+        alert('¡Gracias por tu compra simulada!');
+        localStorage.removeItem('carrito');
+        renderizarCarrito();
+    }
+</script>
+</body>
+</html>

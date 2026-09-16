@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "titulo": "Cien Años de Soledad",
+    "autor": "Gabriel García Márquez",
+    "precio": 45000,
+    "genero": "Novela",
+    "imagen": "cien-anos.jpg",
+    "descripcion": "La obra maestra del realismo mágico que narra la historia de la familia Buendía en el pueblo ficticio de Macondo."
+  },
+  {
+    "id": 2,
+    "titulo": "El Hobit",
+    "autor": "J.R.R. Tolkien",
+    "precio": 52000,
+    "genero": "Fantasia",
+    "imagen": "el-hobbit.jpg",
+    "descripcion": "Bilbo Bolsón es arrastrado a una búsqueda épica para reclamar el reino enano de Erebor del temible dragón Smaug."
+  },
+  {
+    "id": 3,
+    "titulo": "Orgullo y Prejuicio",
+    "autor": "Jane Austen",
+    "precio": 38000,
+    "genero": "Romance",
+    "imagen": "orgullo-prejuicio.jpg",
+    "descripcion": "Una historia clásica sobre las complicaciones del amor, las clases sociales y los prejuicios en la Inglaterra del siglo XIX."
+  },
+  {
+    "id": 4,
+    "titulo": "El Código Da Vinci",
+    "autor": "Dan Brown",
+    "precio": 48000,
+    "genero": "Suspenso",
+    "imagen": "codigo-da-vinci.jpg",
+    "descripcion": "Un misterio trepidante que sigue al simbologista Robert Langdon tras un asesinato en el Museo del Louvre."
+  },
+  {
+    "id": 5,
+    "titulo": "Los Juegos del Hambre",
+    "autor": "Suzanne Collins",
+    "precio": 42000,
+    "genero": "Accion y Aventura",
+    "imagen": "juegos-del-hambre.jpg",
+    "descripcion": "En una nación distópica, Katniss Everdeen se ofrece voluntaria para ocupar el lugar de su hermana en una competencia a muerte."
+  }
+]
